@@ -1,0 +1,6 @@
+Set Environment on VS Windows ##################################
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+(venv) PS F:\MLOps-Insurance_Sell_Prediction>       
+python -m pip install --upgrade pip
+python -m pip install --upgrade setuptools wheel
