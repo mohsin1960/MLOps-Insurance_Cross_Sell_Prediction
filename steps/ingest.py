@@ -2,17 +2,20 @@ import pandas as pd
 import yaml
 
 class Ingestion:  
-    def __init__(self):  # CONSTRUCTOR: It call every time when create object of that class
+    # CONSTRUCTOR: It call every time when create object of that class
+    def __init__(self):  
         self.config = self.load_config()
         # load_config() is a method of class Ingestion which is loading config.yaml
         # means  config = config.yaml 
 
-    def load_config(self):  ######## Load Config METHOD 
+    ######## Load_Config METHOD
+    def load_config(self):   
         with open("config.yml", "r") as file:
             return yaml.safe_load(file)
             ###### Read the yaml file and convert it into python object 
 
-    def load_data(self):  ####### Load Data METHOD
+    ####### Load_Data METHOD
+    def load_data(self):  
         train_data_path = self.config['data']['train_path']
         test_data_path = self.config['data']['test_path']
         train_data = pd.read_csv(train_data_path)
