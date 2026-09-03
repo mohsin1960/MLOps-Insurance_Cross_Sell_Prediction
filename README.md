@@ -24,23 +24,9 @@ The goal of this project is to predict whether a customer will purchase insuranc
 ---
 
 📁 Project Structure
+<img width="515" height="288" alt="image" src="https://github.com/user-attachments/assets/383cd69f-b5da-41fe-b023-bd7173398d58" />
 
-Insurance_Sell_Prediction/
-├── data/               # Dataset storage
-│   ├── train.csv       # Training data
-│   └── test.csv        # Testing data
-├── models/             # Model artifacts
-│   └── model.pkl       # Serialized pipeline (Preprocessor + Model)
-├── steps/              # Pipeline stage implementations
-│   ├── __init__.py     # Package initializer
-│   ├── ingest.py       # Data loading logic
-│   ├── clean.py        # Data preprocessing & outlier removal
-│   ├── train.py        # Model training & pipeline construction
-│   └── predict.py      # Model evaluation & performance metrics
-├── config.yaml         # Central configuration file
-├── main.py             # Main Orchestrator (Execution Entry Point)
-├── dataset.py          # Utility to generate synthetic sample data
-└── requirements.txt    # Project dependencies
+
 
 ---
 
