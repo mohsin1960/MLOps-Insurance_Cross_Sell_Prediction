@@ -8,9 +8,11 @@ An end-to-end Machine Learning pipeline designed to predict insurance sales beha
 
 🚀 Project Overview
 
+
 The goal of this project is to predict whether a customer will purchase insurance based on their demographic and behavioral data. The pipeline handles real-world data challenges such as class imbalance (using SMOTE) and data outliers (using IQR).
 
 ✨ Key Features
+
 
 - Modular Architecture: Each stage of the ML lifecycle is encapsulated in its own class.
 - Centralized Configuration: Model hyperparameters and file paths are managed via config.yaml.
@@ -21,11 +23,9 @@ The goal of this project is to predict whether a customer will purchase insuranc
 - Imbalance Handling: Integrated SMOTE (Synthetic Minority Over-sampling Technique) to handle skewed target classes.
 - Pipeline Serialization: Saves the entire preprocessing and model chain as a single .pkl file for easy deployment.
 
+
 ---
-
 📁 Project Structure
-
-
 <img width="515" height="288" alt="image" src="https://github.com/user-attachments/assets/383cd69f-b5da-41fe-b023-bd7173398d58" />
 
 
