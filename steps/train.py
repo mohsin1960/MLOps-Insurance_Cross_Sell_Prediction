@@ -18,7 +18,7 @@ class Trainer:
 
     ######### Load Method ##########
     def load_config(self):
-        with open('config.yml', 'r') as config_file:
+        with open('config.yaml', 'r') as config_file:
             return yaml.safe_load(config_file)
 
     ######### Pipeline Method ###########
@@ -99,5 +99,7 @@ class Trainer:
 
     ######## Save pipeline Method ########
     def save_model(self):
+        if not os.path.exists(self.model_path):
+            os.makedirs(self.model_path)
         model_file_path = os.path.join(self.model_path, 'model.pkl')
         joblib.dump(self.pipeline, model_file_path)

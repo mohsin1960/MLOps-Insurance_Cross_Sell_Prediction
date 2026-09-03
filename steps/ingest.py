@@ -10,7 +10,7 @@ class Ingestion:
 
     ######## Load_Config METHOD
     def load_config(self):   
-        with open("config.yml", "r") as file:
+        with open("config.yaml", "r") as file:
             return yaml.safe_load(file)
             ###### Read the yaml file and convert it into python object 
 

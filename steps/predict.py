@@ -9,7 +9,7 @@ class Predictor:
 
     def load_config(self):
         import yaml
-        with open('config.yml', 'r') as config_file:
+        with open('config.yaml', 'r') as config_file:
             return yaml.safe_load(config_file)
         
     def load_model(self):
