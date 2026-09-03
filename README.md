@@ -24,6 +24,8 @@ The goal of this project is to predict whether a customer will purchase insuranc
 ---
 
 📁 Project Structure
+
+
 <img width="515" height="288" alt="image" src="https://github.com/user-attachments/assets/383cd69f-b5da-41fe-b023-bd7173398d58" />
 
 
