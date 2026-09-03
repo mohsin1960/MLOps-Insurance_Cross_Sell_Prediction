@@ -1,13 +1,8 @@
 🛡️ Insurance Sell Prediction - MLOps Pipeline
 
-Python (https://img.shields.io/badge/Python-3.8+-blue.svg) (https://www.python.org/)
-Scikit-Learn (https://img.shields.io/badge/Scikit--Learn-Latest-orange.svg) (https://scikit-learn.org/)
-License (https://img.shields.io/badge/License-MIT-green.svg) (LICENSE)
-
 An end-to-end Machine Learning pipeline designed to predict insurance sales behavior. This project implements a modular MLOps architecture, ensuring a clean separation between data ingestion, preprocessing, model training, and evaluation.
 
 🚀 Project Overview
-
 
 The goal of this project is to predict whether a customer will purchase insurance based on their demographic and behavioral data. The pipeline handles real-world data challenges such as class imbalance (using SMOTE) and data outliers (using IQR).
 
@@ -25,9 +20,8 @@ The goal of this project is to predict whether a customer will purchase insuranc
 
 
 ---
-📁 Project Structure
-<img width="515" height="288" alt="image" src="https://github.com/user-attachments/assets/383cd69f-b5da-41fe-b023-bd7173398d58" />
 
+<img width="519" height="315" alt="image" src="https://github.com/user-attachments/assets/d908c695-37a7-4be4-bb8a-6ab39881f1e1" />
 
 
 ---
