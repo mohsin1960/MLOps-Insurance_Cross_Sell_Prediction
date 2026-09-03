@@ -1,4 +1,5 @@
 [core]
     remote = mlops-data
+    autostage = true
 ['remote "mlops-data"']
     url = s3://alibaba-comparison/MLOps-data/
