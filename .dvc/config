@@ -1,0 +1,4 @@
+[core]
+    remote = mlops-data
+['remote "mlops-data"']
+    url = s3://alibaba-comparison/MLOps-data/
