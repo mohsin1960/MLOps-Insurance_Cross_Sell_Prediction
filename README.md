@@ -1,54 +1,101 @@
-📦 Project Structure Documentation: Insurance Sell Prediction
+🛡️ Insurance Sell Prediction - MLOps Pipeline
 
-This project is a Machine Learning pipeline designed to predict insurance sales. It follows a modular MLOps structure where each stage of the pipeline (Ingestion, Cleaning, Training, and Prediction) is isolated into its own class.
+Python (https://img.shields.io/badge/Python-3.8+-blue.svg) (https://www.python.org/)
+Scikit-Learn (https://img.shields.io/badge/Scikit--Learn-Latest-orange.svg) (https://scikit-learn.org/)
+License (https://img.shields.io/badge/License-MIT-green.svg) (LICENSE)
 
-📁 Directory Layout
+An end-to-end Machine Learning pipeline designed to predict insurance sales behavior. This project implements a modular MLOps architecture, ensuring a clean separation between data ingestion, preprocessing, model training, and evaluation.
+
+🚀 Project Overview
+
+The goal of this project is to predict whether a customer will purchase insurance based on their demographic and behavioral data. The pipeline handles real-world data challenges such as class imbalance (using SMOTE) and data outliers (using IQR).
+
+✨ Key Features
+
+- Modular Architecture: Each stage of the ML lifecycle is encapsulated in its own class.
+- Centralized Configuration: Model hyperparameters and file paths are managed via config.yaml.
+- Robust Preprocessing:
+  - Automated handling of missing values (Imputation).
+  - Currency cleaning and type casting.
+  - Outlier removal using the Interquartile Range (IQR) method.
+- Imbalance Handling: Integrated SMOTE (Synthetic Minority Over-sampling Technique) to handle skewed target classes.
+- Pipeline Serialization: Saves the entire preprocessing and model chain as a single .pkl file for easy deployment.
+
+---
+
+📁 Project Structure
 
 Insurance_Sell_Prediction/
-├── data/               # Raw dataset storage
+├── data/               # Dataset storage
 │   ├── train.csv       # Training data
 │   └── test.csv        # Testing data
-├── models/             # Saved model artifacts
-│   └── model.pkl       # The trained pipeline (preprocessor + model)
+├── models/             # Model artifacts
+│   └── model.pkl       # Serialized pipeline (Preprocessor + Model)
 ├── steps/              # Pipeline stage implementations
-│   ├── __init__.py     # Makes 'steps' a Python package
+│   ├── __init__.py     # Package initializer
 │   ├── ingest.py       # Data loading logic
 │   ├── clean.py        # Data preprocessing & outlier removal
 │   ├── train.py        # Model training & pipeline construction
 │   └── predict.py      # Model evaluation & performance metrics
-├── config.yaml         # Central configuration (paths, hyperparameters)
-├── main.py             # Execution entry point (Orchestrator)
-├── dataset.py          # Utility script to generate sample data
+├── config.yaml         # Central configuration file
+├── main.py             # Main Orchestrator (Execution Entry Point)
+├── dataset.py          # Utility to generate synthetic sample data
 └── requirements.txt    # Project dependencies
 
-🚀 Execution Flow (How it starts)
+---
 
-The project starts at main.py. It acts as the orchestrator that calls the different stages in a specific sequence:
+⚙️ Workflow Execution Flow
 
-1. main.py $\rightarrow$ steps/ingest.py:
-   - Loads config.yaml.
-   - Reads train.csv and test.csv from the data/ folder.
-2. main.py $\rightarrow$ steps/clean.py:
-   - Handles missing values (Imputation).
-   - Cleans currency strings (e.g., removing '£').
-   - Removes outliers using the Interquartile Range (IQR) method.
-3. main.py $\rightarrow$ steps/train.py:
-   - Creates a ColumnTransformer pipeline (Scaling & One-Hot Encoding).
-   - Applies SMOTE to handle class imbalance.
-   - Trains the selected model (Decision Tree, Random Forest, or Gradient Boosting).
-   - Saves the entire pipeline as model.pkl in the models/ folder.
-4. main.py $\rightarrow$ steps/predict.py:
-   - Loads the saved model.pkl.
-   - Predicts outcomes for the test set.
-   - Calculates and prints Accuracy, ROC AUC, and a Classification Report.
+The pipeline is executed via main.py in the following sequence:
 
-🛠 Key Components
+main.py $\rightarrow$ Ingest $\rightarrow$ Clean $\rightarrow$ Train $\rightarrow$ Predict
 
-- Configuration-Driven: By changing config.yaml, you can switch models or change data paths without touching the code.
-- Pipeline-Based: The project uses imblearn.pipeline.Pipeline, ensuring that preprocessing steps (scaling/encoding) are saved along with the model to prevent data leakage during prediction.
-- Data Generation: dataset.py is a utility used to create synthetic classification data for testing the pipeline.
+1. Ingestion: Loads raw CSV data based on paths defined in config.yaml.
+2. Cleaning: Performs feature dropping, currency normalization, median filling for ages, and IQR-based outlier removal.
+3. Training:
+   - Builds a ColumnTransformer for Scaling and One-Hot Encoding.
+   - Applies SMOTE to balance classes.
+   - Fits the selected ML model.
+   - Exports the finalized pipeline to models/model.pkl.
+4. Prediction: Loads the saved model and evaluates it against the test set, outputting an Accuracy Score, ROC AUC, and a detailed Classification Report.
 
-=======================================================================================================================================================
+---
+
+🛠️ Getting Started
+
+Installation
+
+1. Clone the repository:
+git clone https://github.com/your-username/Insurance-Sell-Prediction.git
+cd Insurance-Sell-Prediction
+2. Create a virtual environment:
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+3. Install dependencies:
+pip install -r requirements.txt
+
+Usage
+
+To run the complete pipeline:
+python main.py
+
+Configuration
+
+You can change the model or hyperparameters without modifying the code by editing config.yaml:
+model:
+  name: GradientBoostingClassifier # Options: DecisionTreeClassifier, RandomForestClassifier, etc.
+  params:
+    max_depth: 5
+    n_estimators: 100
+  store_path: models/
+
+---
+
+📊 Model Evaluation
+
+The pipeline supports multiple models. Based on testing, the GradientBoostingClassifier typically provides the best trade-off between Accuracy and ROC AUC for this imbalanced dataset.
+
+
 
 
 These goals require balancing:
